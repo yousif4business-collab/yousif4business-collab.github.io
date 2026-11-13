@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Blueprint drawing of the three-axis CNC plotter">
+  <defs>
+    <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#1d4f86" stroke-opacity=".35" stroke-width="1"/></pattern>
+    <pattern id="G" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M100 0H0V100" fill="none" stroke="#2a6bb5" stroke-opacity=".45" stroke-width="1"/></pattern>
+    <radialGradient id="bg" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#0d3566"/><stop offset="1" stop-color="#051a33"/></radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <rect width="800" height="500" fill="url(#G)"/>
+  <g fill="none" stroke="#86ffff" stroke-width="2" stroke-linejoin="round">
+    <!-- base frame -->
+    <path d="M150 380 L560 380 L650 320 L240 320 Z"/>
+    <path d="M150 380 V400 H560 V380 M560 400 L650 340 V320"/>
+    <!-- Y rails -->
+    <path d="M190 372 L280 312 M520 372 L610 312" stroke-opacity=".8"/>
+    <!-- bed -->
+    <path d="M230 362 L500 362 L565 320 L295 320 Z" fill="#86ffff" fill-opacity=".06"/>
+    <!-- engraving on bed -->
+    <path d="M330 350 C350 330 380 334 392 344 S430 352 450 332" stroke="#5ad1ff" stroke-dasharray="4 4"/>
+    <!-- gantry uprights -->
+    <path d="M250 340 V190 H272 V340 M560 300 V150 H582 V300"/>
+    <!-- X beam -->
+    <path d="M272 196 L560 156 M272 222 L560 182" />
+    <path d="M261 190 L571 150" stroke-opacity=".5"/>
+    <!-- carriage + Z axis -->
+    <rect x="392" y="160" width="58" height="62" rx="4" transform="skewY(-8)" fill="#86ffff" fill-opacity=".08"/>
+    <path d="M421 222 V292" />
+    <rect x="407" y="232" width="28" height="44" rx="3"/>
+    <path d="M421 292 L416 304 H426 Z" fill="#86ffff"/>
+    <!-- steppers -->
+    <rect x="228" y="150" width="44" height="40" rx="4" fill="#86ffff" fill-opacity=".1"/>
+    <rect x="160" y="384" width="40" height="30" rx="3" fill="#86ffff" fill-opacity=".1"/>
+    <rect x="576" y="118" width="40" height="36" rx="4" fill="#86ffff" fill-opacity=".1"/>
+    <!-- arduino -->
+    <rect x="620" y="360" width="120" height="74" rx="6" fill="#86ffff" fill-opacity=".06"/>
+    <path d="M632 372 H700 M632 384 H690 M632 396 H712 M720 372 V420" stroke-opacity=".7"/>
+    <path d="M620 390 C590 390 580 360 560 352" stroke-dasharray="5 5" stroke-opacity=".7"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#bfefff" letter-spacing=".5">
+    <text x="214" y="140">NEMA 17, X</text>
+    <text x="584" y="108">NEMA 17, Y</text>
+    <text x="448" y="262">Z, 775 spindle</text>
+    <text x="624" y="452">Arduino UNO, CNC Shield V3, A4988</text>
+    <text x="40" y="460">G-code: CamBam to UGS to Arduino</text>
+  </g>
+  <g fill="none" stroke="#86ffff" stroke-width="1.2" stroke-opacity=".7">
+    <path d="M240 145 L258 170"/><path d="M600 112 L596 120"/><path d="M445 258 L433 252"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#86ffff">
+    <text x="40" y="56" font-size="22" font-weight="700">SMART CNC PLOTTER</text>
+    <text x="40" y="80" font-size="13" fill="#9fc6e8">Three-axis engraving and carving, built for under 240,000 IQD</text>
+  </g>
+</svg>
