@@ -16,6 +16,9 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://yousif4business-collab.github.io/">
+<link rel="alternate" hreflang="ar" href="https://yousif4business-collab.github.io/?lang=ar">
+<script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("lang");if(l==="ar"){var d=document.documentElement;d.lang="ar";d.dir="rtl";d.className+=" pre";}}catch(e){}</script>
 <link rel="preload" href="fonts/sora.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/yousif.webp" as="image">
@@ -25,6 +28,7 @@
 <style>
 @font-face{font-family:"Sora";src:url(fonts/sora.woff2) format("woff2");font-weight:100 800;font-display:swap}
 @font-face{font-family:"Inter";src:url(fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Readex";src:url(fonts/readex-arabic.woff2) format("woff2");font-weight:160 700;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 :root{
   --bg:#030D18;
   --bg-2:#061628;
@@ -55,8 +59,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:8px}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:28px}
-.skip{position:absolute;left:-999px;top:10px;z-index:100;background:var(--blue);color:#fff;padding:10px 16px;border-radius:10px}
-.skip:focus{left:12px}
+.skip{position:absolute;top:-80px;inset-inline-start:12px;z-index:100;background:var(--blue);color:#fff;padding:10px 16px;border-radius:10px;transition:top .15s}
+.skip:focus{top:10px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* buttons */
@@ -119,7 +123,7 @@ button{font:inherit;color:inherit}
 .grad{background:linear-gradient(100deg,var(--cyan) 0%,#5AA8FF 55%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .role{margin-top:22px;font-family:var(--display);font-size:clamp(19px,2.1vw,25px);font-weight:500;color:var(--muted);min-height:1.5em}
 .role b{color:var(--text);font-weight:600}
-.caret{display:inline-block;width:2px;height:1.05em;background:var(--cyan);margin-left:3px;vertical-align:-.15em;animation:blink 1s steps(2) infinite}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--cyan);margin-inline-start:3px;vertical-align:-.15em;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 .lede{margin-top:18px;max-width:560px;color:var(--muted);font-size:17.5px}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
@@ -127,9 +131,9 @@ button{font:inherit;color:inherit}
 .trust small{color:var(--dim);font-size:13px;font-weight:500}
 .trust-logos{display:flex}
 .trust-logos img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 3px var(--bg)}
-.trust-logos img+img{margin-left:-8px}
+.trust-logos img+img{margin-inline-start:-8px}
 
-.side{display:flex;flex-direction:column;align-items:center;margin-left:auto;width:100%;max-width:520px}
+.side{display:flex;flex-direction:column;align-items:center;margin-inline-start:auto;width:100%;max-width:520px}
 .portrait{position:relative;aspect-ratio:1/1.04;max-width:470px;width:100%}
 .badges{position:relative;z-index:2;display:flex;justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap}
 .rb{position:relative;display:flex;align-items:center;gap:13px;padding:13px 20px 13px 13px;border-radius:18px;background:rgba(8,26,45,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 22px 44px -22px rgba(0,0,0,.8);animation:float 6s ease-in-out infinite}
@@ -180,13 +184,13 @@ button{font:inherit;color:inherit}
 .head.center .eyebrow::after{content:"";width:26px;height:1.5px;background:currentColor}
 
 /* marquee */
-.marquee{margin-top:56px;position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee{direction:ltr;margin-top:56px;position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 .track{display:flex;width:max-content;gap:18px;animation:slide 48s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes slide{to{transform:translateX(-50%)}}
 .cl{display:flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:999px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
 .cl img{width:46px;height:46px;border-radius:50%}
-.cl span{font-weight:600;font-size:15px;white-space:nowrap}
+.cl span{font-weight:600;font-size:15px;white-space:nowrap;unicode-bidi:plaintext}
 .brands .track{animation-duration:40s;animation-direction:reverse}
 .br{display:grid;place-items:center;height:76px;padding:0 30px;border-radius:16px;background:#F5F8FB;min-width:150px}
 .br img{max-height:40px;width:auto}
@@ -206,23 +210,23 @@ button{font:inherit;color:inherit}
 .fact b{display:block;margin-top:4px;font-weight:600;line-height:1.4}
 
 /* timeline */
-.timeline{position:relative;margin-top:56px;padding-left:40px}
-.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cyan),var(--blue) 50%,transparent)}
+.timeline{position:relative;margin-top:56px;padding-inline-start:40px}
+.timeline::before{content:"";position:absolute;inset-inline-start:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cyan),var(--blue) 50%,transparent)}
 .job{position:relative;padding:28px 30px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line)}
 .job+.job{margin-top:22px}
-.job::before{content:"";position:absolute;left:-36px;top:34px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 16px rgba(125,243,255,.7)}
+.job::before{content:"";position:absolute;inset-inline-start:-36px;top:34px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 16px rgba(125,243,255,.7)}
 .job-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .job-logos{display:flex}
 .job-logos img{width:52px;height:52px;border-radius:50%;box-shadow:0 0 0 3px var(--panel)}
-.job-logos img+img{margin-left:-12px}
+.job-logos img+img{margin-inline-start:-12px}
 .job-logos .gen{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(47,107,255,.15);color:var(--cyan)}
 .job-logos .gen svg{width:24px;height:24px}
 .job h3{font-size:21px;font-weight:600}
 .job .org{color:var(--muted);font-size:15px;margin-top:2px}
-.when{margin-left:auto;padding:6px 14px;border-radius:999px;background:rgba(125,243,255,.08);border:1px solid var(--line-2);color:var(--cyan);font-size:13.5px;font-weight:600;white-space:nowrap}
+.when{margin-inline-start:auto;padding:6px 14px;border-radius:999px;background:rgba(125,243,255,.08);border:1px solid var(--line-2);color:var(--cyan);font-size:13.5px;font-weight:600;white-space:nowrap}
 .job ul{margin-top:18px;display:grid;gap:10px}
-.job li{position:relative;padding-left:22px;color:#C7D5E3}
-.job li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;border-radius:2px;background:var(--cyan)}
+.job li{position:relative;padding-inline-start:22px;color:#C7D5E3}
+.job li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:10px;height:2px;border-radius:2px;background:var(--cyan)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .tag{padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted);font-size:12.5px;font-weight:500}
 
@@ -254,9 +258,9 @@ button{font:inherit;color:inherit}
 .proj .pic{position:relative;aspect-ratio:16/10;overflow:hidden;background:#05213F}
 .proj .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .proj:hover .pic img{transform:scale(1.05)}
-.proj .badge{position:absolute;left:14px;bottom:14px;display:flex}
+.proj .badge{position:absolute;inset-inline-start:14px;bottom:14px;display:flex}
 .proj .badge img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 3px rgba(5,33,63,.9)}
-.proj .badge img+img{margin-left:-10px}
+.proj .badge img+img{margin-inline-start:-10px}
 .proj .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
 .proj h3{font-size:18.5px;font-weight:600}
 .proj p{margin-top:8px;color:var(--muted);font-size:15px;flex:1}
@@ -272,7 +276,7 @@ button{font:inherit;color:inherit}
 .work-grid .proj.big .pic{aspect-ratio:16/10}
 .work-grid .proj.big h3{font-size:22px}
 .proj .kind{color:var(--cyan);font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
-.private{position:absolute;top:14px;right:14px;padding:5px 11px;border-radius:999px;background:rgba(3,13,24,.8);border:1px solid var(--line-2);font-size:12px;font-weight:600;color:var(--muted)}
+.private{position:absolute;top:14px;inset-inline-end:14px;padding:5px 11px;border-radius:999px;background:rgba(3,13,24,.8);border:1px solid var(--line-2);font-size:12px;font-weight:600;color:var(--muted)}
 .pic.locked{display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#123a6b,#061a33)}
 .pic.locked svg{width:72px;height:72px;color:var(--cyan);opacity:.85}
 
@@ -289,7 +293,7 @@ button{font:inherit;color:inherit}
 /* process */
 .steps{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
 .step{position:relative;padding:28px 26px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line);overflow:hidden}
-.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;right:18px;top:6px;font-family:var(--display);font-size:64px;font-weight:700;color:rgba(125,200,255,.07);line-height:1}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;inset-inline-end:18px;top:6px;font-family:var(--display);font-size:64px;font-weight:700;color:rgba(125,200,255,.07);line-height:1}
 .step .num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--blue);font-family:var(--display);font-weight:700;font-size:15px;box-shadow:0 0 0 6px rgba(47,107,255,.15)}
 .step h3{margin-top:18px;font-size:19px;font-weight:600}
 .step p{margin-top:8px;color:var(--muted);font-size:15px}
@@ -316,7 +320,7 @@ button{font:inherit;color:inherit}
 .faq details[open]{border-color:var(--line-2)}
 .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 22px;font-weight:600;font-size:16.5px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";margin-left:auto;width:12px;height:12px;flex:none;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg) translateY(-3px);transition:transform .25s}
+.faq summary::after{content:"";margin-inline-start:auto;width:12px;height:12px;flex:none;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg) translateY(-3px);transition:transform .25s}
 .faq details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
 .faq .a{padding:0 22px 22px;color:var(--muted)}
 
@@ -351,7 +355,7 @@ dialog.modal[open]{animation:pop .28s ease}
 .m-pic{position:relative;aspect-ratio:16/8;background:#05213F;overflow:hidden}
 .m-pic img{width:100%;height:100%;object-fit:cover}
 .m-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--bg-2))}
-.m-close{position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:rgba(3,13,24,.75);cursor:pointer;display:grid;place-items:center}
+.m-close{position:absolute;top:14px;inset-inline-end:14px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:rgba(3,13,24,.75);cursor:pointer;display:grid;place-items:center}
 .m-close svg{width:18px;height:18px}
 .m-body{padding:6px 34px 34px}
 .m-body .kind{color:var(--cyan);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
@@ -359,11 +363,29 @@ dialog.modal[open]{animation:pop .28s ease}
 .m-body .lead{margin-top:12px;color:var(--muted);font-size:16.5px}
 .m-body h4{margin-top:26px;font-family:var(--body);font-size:13px;font-weight:600;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
 .m-body ul.scope{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
-.m-body ul.scope li{position:relative;padding-left:26px;color:#C7D5E3}
-.m-body ul.scope li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:16px;border-radius:50%;background:rgba(125,243,255,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%237DF3FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.m-body ul.scope li{position:relative;padding-inline-start:26px;color:#C7D5E3}
+.m-body ul.scope li::before{content:"";position:absolute;inset-inline-start:0;top:.35em;width:16px;height:16px;border-radius:50%;background:rgba(125,243,255,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%237DF3FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
 .m-body .actions{margin-top:28px}
 .m-body .actions .btn{height:46px}
 .m-note{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim);font-size:14px}
+
+/* language */
+.nav-end{display:flex;align-items:center;gap:10px}
+.lang{height:42px;min-width:58px;padding:0 15px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--text);font-family:"Readex",var(--body);font-weight:600;font-size:15px;cursor:pointer;transition:border-color .18s,background .18s}
+.lang:hover{border-color:var(--cyan);background:rgba(125,243,255,.08)}
+.pre body{visibility:hidden}
+html[lang="ar"]{--display:"Readex","Sora",system-ui,sans-serif;--body:"Readex","Inter",system-ui,sans-serif}
+html[lang="ar"] body{line-height:1.85}
+html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4,html[lang="ar"] .head h2,html[lang="ar"] .contact h2{letter-spacing:0;line-height:1.4}
+html[lang="ar"] .eyebrow,html[lang="ar"] .kind,html[lang="ar"] .label-row small,html[lang="ar"] .wm small,html[lang="ar"] .m-body h4{letter-spacing:0;text-transform:none}
+html[lang="ar"] .eyebrow{font-size:14.5px}
+html[lang="ar"] .role{font-weight:500}
+html[lang="ar"] .stat .lbl{max-width:26ch}
+html[lang="ar"] .stat b{direction:ltr;text-align:right}
+html[lang="ar"] .proj .more svg{transform:scaleX(-1)}
+html[lang="ar"] .proj:hover .more svg{transform:scaleX(-1) translateX(4px)}
+html[lang="ar"] .faq summary,html[lang="ar"] .filter,html[lang="ar"] .btn{font-weight:600}
+.ltr{direction:ltr;unicode-bidi:isolate}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
@@ -400,11 +422,11 @@ dialog.modal[open]{animation:pop .28s ease}
   .work-grid .proj,.work-grid .proj.big{grid-column:span 12}
   .flow{grid-template-columns:1fr 1fr}
   .facts{grid-template-columns:1fr 1fr}
-  .timeline{padding-left:26px}
-  .timeline::before{left:5px}
+  .timeline{padding-inline-start:26px}
+  .timeline::before{inset-inline-start:5px}
   .job{padding:22px 20px}
-  .job::before{left:-27px;width:14px;height:14px}
-  .when{margin-left:0}
+  .job::before{inset-inline-start:-27px;width:14px;height:14px}
+  .when{margin-inline-start:0}
   .edu-card{grid-template-columns:1fr}
   .m-body{padding:4px 22px 26px}
   .m-body ul.scope{grid-template-columns:1fr}
@@ -476,8 +498,11 @@ dialog.modal[open]{animation:pop .28s ease}
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn-wa nav-cta" data-wa href="https://wa.me/9647727080528"><svg><use href="#i-wa"/></svg>WhatsApp</a>
-    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <div class="nav-end">
+      <button class="lang" id="lang" type="button" lang="ar" aria-label="عرض الموقع بالعربية">عربي</button>
+      <a class="btn btn-wa nav-cta" data-wa href="https://wa.me/9647727080528"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -544,7 +569,7 @@ dialog.modal[open]{animation:pop .28s ease}
   <div class="wrap head center rv">
     <span class="eyebrow">Clients</span>
     <h2 id="clients-h">Sites I've wired, secured and handed over</h2>
-    <p>Delivered through <a href="https://rawafid.space" style="color:var(--cyan)">Rawafid</a>, an IT services company in Iraq.</p>
+    <p>Headquarters, offices, warehouses and commercial buildings, wired and handed over with full documentation.</p>
   </div>
   <div class="marquee" aria-label="Client list">
     <div class="track">
@@ -568,8 +593,8 @@ dialog.modal[open]{animation:pop .28s ease}
     <div class="text rv">
       <span class="eyebrow">About</span>
       <div class="head"><h2 id="about-h">I build IT that works on day one, and keeps working.</h2></div>
-      <p>I'm an IT engineer from Baghdad with a B.Sc. in Computer Engineering from Al-Nahrain University. As the <strong>sole IT engineer for Abwaab and Ameena</strong>, I took a headquarters from an empty building to 300+ connected devices, and I document every site down to the last cable.</p>
-      <p>At <strong>Sama Babil Pharmaceutical Industry</strong> I ran an eight-floor headquarters and the group's factory sites, migrated the group's email to Google Workspace and connected Baghdad to the Babil factories. Alongside the infrastructure, I build internal systems and automation that remove manual work.</p>
+      <p data-ar="أنا مهندس تقنية معلومات من بغداد، حاصل على بكالوريوس هندسة الحاسوب من جامعة النهرين. بصفتي &lt;strong&gt;مهندس تقنية المعلومات الوحيد في أبواب وأمينة&lt;/strong&gt;، نقلتُ مقرًّا رئيسيًا من مبنى فارغ إلى أكثر من 300 جهاز متصل، وأوثّق كل موقع حتى آخر كابل.">I'm an IT engineer from Baghdad with a B.Sc. in Computer Engineering from Al-Nahrain University. As the <strong>sole IT engineer for Abwaab and Ameena</strong>, I took a headquarters from an empty building to 300+ connected devices, and I document every site down to the last cable.</p>
+      <p data-ar="في &lt;strong&gt;سما بابل للصناعات الدوائية&lt;/strong&gt; أدرتُ مقرًّا رئيسيًا من ثمانية طوابق ومواقع المصانع التابعة للمجموعة، ونقلتُ بريد المجموعة إلى Google Workspace، وربطتُ بغداد بمصانع بابل. وإلى جانب البنية التحتية، أبني أنظمة داخلية وأتمتة تُغني عن العمل اليدوي.">At <strong>Sama Babil Pharmaceutical Industry</strong> I ran an eight-floor headquarters and the group's factory sites, migrated the group's email to Google Workspace and connected Baghdad to the Babil factories. Alongside the infrastructure, I build internal systems and automation that remove manual work.</p>
     </div>
     <div class="facts">
       <div class="fact rv"><span class="ic"><svg><use href="#i-pin"/></svg></span><small>Based in</small><b>Baghdad, Iraq</b></div>
@@ -775,7 +800,7 @@ dialog.modal[open]{animation:pop .28s ease}
 <section class="contact" id="contact" aria-labelledby="contact-h">
   <div class="wrap rv">
     <span class="eyebrow">Contact</span>
-    <h2 id="contact-h">Let's build something that <span class="grad">stays up</span>.</h2>
+    <h2 id="contact-h" data-ar="لنبنِ معًا شيئًا &lt;span class=&quot;grad&quot;&gt;لا يتوقف&lt;/span&gt;.">Let's build something that <span class="grad">stays up</span>.</h2>
     <p class="sub">For IT infrastructure, network, systems or automation roles and projects. WhatsApp is the fastest way to reach me.</p>
     <div class="actions">
       <a class="btn btn-wa" data-wa href="https://wa.me/9647727080528"><svg><use href="#i-wa"/></svg>WhatsApp me</a>
@@ -783,9 +808,9 @@ dialog.modal[open]{animation:pop .28s ease}
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/yousif-abdulkareem-al-sara-4220b1189"><svg><use href="#i-in"/></svg>LinkedIn</a>
     </div>
     <div class="reach">
-      <a href="mailto:yousifabdulkareem4business@gmail.com"><svg><use href="#i-mail"/></svg>yousifabdulkareem4business@gmail.com</a>
-      <a href="tel:+9647727080528"><svg><use href="#i-phone"/></svg>+964 772 708 0528</a>
-      <a href="https://github.com/yousif4business-collab"><svg><use href="#i-gh"/></svg>github.com/yousif4business-collab</a>
+      <a href="mailto:yousifabdulkareem4business@gmail.com"><svg><use href="#i-mail"/></svg><span class="ltr">yousifabdulkareem4business@gmail.com</span></a>
+      <a href="tel:+9647727080528"><svg><use href="#i-phone"/></svg><span class="ltr">+964 772 708 0528</span></a>
+      <a href="https://github.com/yousif4business-collab"><svg><use href="#i-gh"/></svg><span class="ltr">github.com/yousif4business-collab</span></a>
     </div>
   </div>
 </section>
@@ -812,137 +837,243 @@ dialog.modal[open]{animation:pop .28s ease}
 (function(){
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var WA = "https://wa.me/9647727080528?text=" + encodeURIComponent("Hi Yousif, I saw your portfolio and I'd like to talk with you.");
-  document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = WA; a.target = "_blank"; a.rel = "noopener"; });
-  document.querySelectorAll('a[href^="https://"]:not([data-wa])').forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+  var LANG = "en";
 
-  /* ---------- data ---------- */
+  /* ---------- Arabic text for the static page (keyed by the English text) ---------- */
+  var AR = {
+    "Skip to content":"انتقل إلى المحتوى","About":"نبذة","Experience":"الخبرة","What I do":"ماذا أقدّم","Projects":"المشاريع","Contact":"تواصل","WhatsApp":"واتساب",
+    "IT Infrastructure & AI":"البنية التحتية والذكاء الاصطناعي",
+    "Open to work in Baghdad, Iraq":"متاح للعمل في بغداد، العراق",
+    "IT Infrastructure Engineer, AI and Automation Developer":"مهندس بنية تحتية لتقنية المعلومات، مطوّر ذكاء اصطناعي وأتمتة",
+    "I'm an":"أنا",
+    "I design, build and run business IT across Iraq: networks, firewalls, Wi-Fi, CCTV and access control, cloud and email. Then I automate the busywork with AI-driven systems.":"أصمّم وأبني وأدير أنظمة تقنية المعلومات للشركات في العراق: الشبكات والجدران النارية والواي فاي وكاميرات المراقبة وأنظمة الدخول والسحابة والبريد. ثم أؤتمت الأعمال الروتينية بأنظمة تعتمد على الذكاء الاصطناعي.",
+    "WhatsApp me":"راسلني على واتساب","Email me":"راسلني بالبريد","See my work":"شاهد أعمالي",
+    "Client sites include Uber, Careem, Geely, Abwaab and Al Majal Business Park":"من مواقع العملاء: أوبر، كريم، جيلي، أبواب ومجمع المجال للأعمال",
+    "IT Infrastructure":"البنية التحتية","and Operations":"وتشغيل تقنية المعلومات","AI Developer":"مطوّر ذكاء اصطناعي","and Automation":"وأتمتة الأعمال",
+    "Employees supported as the sole IT engineer":"موظف دعمتُهم بصفتي مهندس تقنية المعلومات الوحيد",
+    "Fiber business lines designed and distributed":"خط إنترنت فايبر للأعمال صمّمتُ توزيعها",
+    "Client sites delivered and documented":"موقع عميل سُلّم مع توثيق كامل",
+    "Buildings served for different clients":"مبنى خدمتُها لعملاء مختلفين",
+    "Clients":"العملاء","Sites I've wired, secured and handed over":"مواقع مدّدتُ شبكاتها وأمّنتها وسلّمتها",
+    "Headquarters, offices, warehouses and commercial buildings, wired and handed over with full documentation.":"مقرات ومكاتب ومستودعات ومبانٍ تجارية، مُدّدت شبكاتها وسُلّمت مع توثيق كامل.",
+    "Uber":"أوبر","Careem":"كريم","Geely":"جيلي","Abwaab":"أبواب","Ameena":"أمينة","Al Majal Business Park":"مجمع المجال للأعمال","JP Law Group":"مجموعة JP للمحاماة","Plastic & Derma Clinic":"عيادة بلاستك آند ديرما","Workspace":"ورك سبيس","English Gate":"انكلش كيت",
+    "I build IT that works on day one, and keeps working.":"أبني أنظمة تقنية معلومات تعمل من اليوم الأول، وتستمر بالعمل.",
+    "Based in":"مقيم في","Baghdad, Iraq":"بغداد، العراق","Degree":"الشهادة","B.Sc. Computer Engineering, Al-Nahrain University, 2025":"بكالوريوس هندسة الحاسوب، جامعة النهرين، 2025",
+    "Languages":"اللغات","Arabic (native), English (professional)":"العربية (اللغة الأم)، الإنجليزية (مستوى مهني)","Open to":"متاح لـ","On-site roles in Iraq, or remote":"العمل الحضوري في العراق أو عن بُعد",
+    "Where I've run the network":"أين أدرتُ الشبكات",
+    "IT Engineer":"مهندس تقنية المعلومات","Sama Babil Pharmaceutical Industry, Sumer Holding Group":"سما بابل للصناعات الدوائية، مجموعة سومر القابضة","Apr 2026 to Oct 2026":"نيسان 2026 إلى تشرين الأول 2026",
+    "Ran the IT estate of an eight-floor headquarters and the group's manufacturing sites in Babil: core routing, switching, wireless, FortiGate firewalls, CCTV, access control and IP telephony.":"أدرتُ منظومة تقنية المعلومات لمقر رئيسي من ثمانية طوابق ولمواقع التصنيع التابعة للمجموعة في بابل: التوجيه والتبديل الأساسي، والشبكات اللاسلكية، وجدران FortiGate النارية، وكاميرات المراقبة، وأنظمة الدخول، والهاتف الشبكي.",
+    "Migrated the group's corporate email to Google Workspace: phased mailbox migration, MX cutover and 2FA enforcement.":"نقلتُ البريد المؤسسي للمجموعة إلى Google Workspace: ترحيل الصناديق على مراحل، وتحويل سجلات MX، وفرض التحقق بخطوتين.",
+    "Connected the Baghdad headquarters to the Babil factory sites, and led the move from metered bandwidth to a cheaper, higher-capacity fiber line.":"ربطتُ المقر الرئيسي في بغداد بمواقع المصانع في بابل، وقدتُ الانتقال من باقات إنترنت محدودة إلى خط فايبر أرخص وبسعة أعلى.",
+    "Built internal systems for asset inventory and fault logging, and automated the monthly reporting to Finance and management.":"بنيتُ أنظمة داخلية لجرد الأصول وتسجيل الأعطال، وأتمتتُ التقارير الشهرية المرفوعة إلى المالية والإدارة.",
+    "Site-to-site links":"ربط المواقع","CCTV":"كاميرات المراقبة","IP telephony":"الهاتف الشبكي",
+    "IT Infrastructure & Support Specialist":"أخصائي البنية التحتية والدعم الفني","Abwaab and Ameena":"أبواب وأمينة","2025 to 2026":"2025 إلى 2026",
+    "Sole IT specialist for 500+ employees across a corporate headquarters, satellite offices and a warehouse.":"أخصائي تقنية المعلومات الوحيد لأكثر من 500 موظف في مقر رئيسي ومكاتب فرعية ومستودع.",
+    "Built the headquarters from an empty building: structured cabling, per-floor racks, switching and Wi-Fi on every floor, building-wide IP CCTV, fingerprint access control, network printing and 300+ PCs.":"بنيتُ المقر الرئيسي من مبنى فارغ: كابلات مهيكلة، وخزائن شبكة لكل طابق، وسويتشات وواي فاي في كل طابق، وكاميرات IP تغطي المبنى، وبصمة للتحكم بالدخول، وطباعة شبكية، وأكثر من 300 حاسوب.",
+    "Designed the distribution of 22 fiber business internet lines across the whole estate.":"صمّمتُ توزيع 22 خط إنترنت فايبر للأعمال على جميع المواقع.",
+    "Built the warehouse and office networks from scratch, planned office moves so everything was live before staff arrived, created the companies' first IT documentation and asset records, and ran daily Level 1 and Level 2 support.":"بنيتُ شبكات المستودع والمكاتب من الصفر، وخطّطتُ لنقل المكاتب بحيث يعمل كل شيء قبل وصول الموظفين، وأنشأتُ أول توثيق وسجلات أصول لتقنية المعلومات في الشركتين، وقدّمتُ دعم المستوى الأول والثاني يوميًا.",
+    "Structured cabling":"الكابلات المهيكلة","Wi-Fi":"واي فاي","IP CCTV":"كاميرات IP","Access control":"أنظمة الدخول","L1 and L2 support":"دعم المستوى الأول والثاني",
+    "Internships":"التدريب العملي","Firewall Cybersecurity Services, and Nokia":"Firewall Cybersecurity Services ونوكيا",
+    "Level 1 SOC Analyst, Firewall Cybersecurity Services: live SOC monitoring and incident analysis with Wazuh SIEM on AWS.":"محلل SOC من المستوى الأول، Firewall Cybersecurity Services: مراقبة حيّة لمركز العمليات الأمنية وتحليل الحوادث باستخدام Wazuh SIEM على AWS.",
+    "Networking and Telecom Intern, Nokia: IP networking, optical communication and telecom infrastructure.":"متدرّب شبكات واتصالات، نوكيا: شبكات IP والاتصالات الضوئية والبنية التحتية للاتصالات.",
+    "IP networking":"شبكات IP","Optical":"الاتصالات الضوئية",
+    "From the first cable to the last automation":"من أول كابل إلى آخر أتمتة",
+    "One person who plans it, builds it, documents it and supports it after handover.":"شخص واحد يخطّط ويبني ويوثّق، ويواصل الدعم بعد التسليم.",
+    "Networks and Wi-Fi":"الشبكات والواي فاي","Routing and switching, VLANs, structured cabling, fiber and site-wide Wi-Fi, with labeled cable maps.":"التوجيه والتبديل وشبكات VLAN والكابلات المهيكلة والفايبر وتغطية واي فاي شاملة، مع خرائط كابلات مرقّمة.",
+    "Security and firewalls":"الحماية والجدران النارية","Firewall policy and segmentation, SOC monitoring, MFA and 2FA across company accounts.":"سياسات الجدار الناري وتقسيم الشبكات، ومراقبة SOC، والتحقق متعدد العوامل لحسابات الشركة.",
+    "CCTV and access control":"كاميرات المراقبة وأنظمة الدخول","Building-wide IP CCTV, recording and remote viewing, fingerprint and face-recognition attendance.":"كاميرات IP تغطي المبنى بالكامل مع التسجيل والمشاهدة عن بُعد، وأنظمة حضور بالبصمة وبصمة الوجه.",
+    "Cloud, email and identity":"السحابة والبريد والهويات","Google Workspace migrations, Microsoft 365, Active Directory and cloud on AWS, Azure and Google Cloud.":"الترحيل إلى Google Workspace، وMicrosoft 365، وActive Directory، وخدمات سحابية على AWS وAzure وGoogle Cloud.",
+    "Servers, storage and voice":"الخوادم والتخزين والاتصالات","Racks and server rooms, Synology NAS, Linux and Docker, and IP-PBX telephony with SIP extensions.":"خزائن وغرف خوادم، وSynology NAS، وLinux وDocker، وسنترال IP-PBX مع تحويلات SIP.",
+    "AI and automation":"الذكاء الاصطناعي والأتمتة","Internal systems, messaging bots, scheduled workflows and AI assistants that replace manual work.":"أنظمة داخلية وبوتات مراسلة وسير عمل مجدول ومساعدات ذكية تُغني عن العمل اليدوي.",
+    "Telegram bots":"بوتات تيليجرام","Equipment I deploy and manage":"الأجهزة التي أركّبها وأديرها",
+    "Case work":"أعمال منفّذة","Real sites, documented to the last cable":"مواقع حقيقية، موثّقة حتى آخر كابل",
+    "Every site is handed over with cable maps, device lists and credentials. Open a project for the full scope.":"يُسلَّم كل موقع مع خرائط الكابلات وقوائم الأجهزة وبيانات الدخول. افتح أي مشروع لرؤية نطاق العمل كاملًا.",
+    "All":"الكل","Network":"الشبكة","Cabling":"الكابلات",
+    "Built in code":"برمجيات","Websites, platforms and hardware I've shipped":"مواقع ومنصّات وأجهزة أطلقتُها",
+    "Live sites, open-source code and a graduation project, built end to end.":"مواقع تعمل، وكود مفتوح المصدر، ومشروع تخرّج، كلها مبنية من البداية إلى النهاية.",
+    "Automation":"الأتمتة","Work that runs while everyone sleeps":"أعمال تُنجَز بينما الجميع نائم",
+    "Systems I've built so that reports, reminders and follow-ups happen on their own.":"أنظمة بنيتُها لتجري التقارير والتذكيرات والمتابعات تلقائيًا.",
+    "Internal systems":"أنظمة داخلية","Asset inventory, fault logging and automated monthly reports for management.":"جرد الأصول وتسجيل الأعطال وتقارير شهرية تلقائية للإدارة.",
+    "Messaging bots":"بوتات المراسلة","A Telegram bot that posts class messages, runs roll-call, alerts families about absences and escalates to supervisors.":"بوت تيليجرام ينشر رسائل الصفوف، ويجري تسجيل الحضور، وينبّه العوائل عند الغياب، ويصعّد الحالات إلى المشرفين.",
+    "Scheduled back office":"أعمال مكتبية مجدولة","Nightly subscription-expiry scans, daily delivery lists and a morning digest for a meal-subscription business.":"فحص ليلي لانتهاء الاشتراكات، وقوائم توصيل يومية، وملخص صباحي لمشروع اشتراكات وجبات.",
+    "AI assistants":"مساعدات ذكية","A rate-limited AI assistant that answers visitor questions on a website, running on Cloudflare Workers AI.":"مساعد ذكاء اصطناعي بعدد طلبات محدود يجيب عن أسئلة الزوار على موقع إلكتروني، ويعمل على Cloudflare Workers AI.",
+    "Lead generation":"توليد العملاء المحتملين","Finds organisations with published contacts, prepares personalised outreach and tracks every lead in a shared sheet.":"يجد الجهات التي تنشر بيانات تواصلها، ويجهّز رسائل تواصل مخصّصة، ويتابع كل عميل محتمل في جدول مشترك.",
+    "How I work":"طريقة عملي","Six steps, from site visit to support":"ست خطوات، من زيارة الموقع إلى الدعم",
+    "Survey":"المسح الميداني","Walk the site, measure every run and note what the business needs on day one.":"أعاين الموقع، وأقيس كل مسار كابل، وأسجّل ما يحتاجه العمل من اليوم الأول.",
+    "Design":"التصميم","Plan racks, switching, Wi-Fi coverage, cameras and access points before anything is bought.":"أخطّط للخزائن والسويتشات وتغطية الواي فاي والكاميرات ونقاط الوصول قبل شراء أي شيء.",
+    "Source":"التجهيز","Pick and source the right equipment for the budget, from the vendors I know well.":"أختار المعدات المناسبة للميزانية وأوفّرها من موردين أعرفهم جيدًا.",
+    "Install":"التركيب","Cable, mount, configure and secure, scheduled so staff walk into a working office.":"تمديد وتثبيت وإعداد وتأمين، بجدول زمني يجعل الموظفين يدخلون إلى مكتب يعمل.",
+    "Test and document":"الفحص والتوثيق","Test every port, camera and device, then hand over cable maps, device lists and credentials.":"أفحص كل منفذ وكاميرا وجهاز، ثم أسلّم خرائط الكابلات وقوائم الأجهزة وبيانات الدخول.",
+    "Support":"الدعم","Stay on for Level 1 and Level 2 support, and keep the documentation current.":"أستمر بتقديم دعم المستوى الأول والثاني، وأحافظ على تحديث التوثيق.",
+    "Education and certifications":"التعليم والشهادات","Engineering degree, built with my hands":"هندسة درستُها وطبّقتُها بيدي",
+    "B.Sc. Computer Engineering":"بكالوريوس هندسة الحاسوب","Al-Nahrain University, 2025":"جامعة النهرين، 2025",
+    "Graduation project: a cost-effective three-axis CNC that engraves and carves wood, plastic and cardboard, built with an Arduino UNO, a CNC Shield V3, A4988 drivers, NEMA 17 steppers and 3D-printed parts.":"مشروع التخرج: آلة CNC ثلاثية المحاور واقتصادية التكلفة، تنقش وتحفر على الخشب والبلاستيك والكرتون، مبنية باستخدام Arduino UNO وCNC Shield V3 ومشغّلات A4988 ومحركات NEMA 17 وقطع مطبوعة بالطباعة ثلاثية الأبعاد.",
+    "View the project":"عرض المشروع","Certification":"شهادة","Cybersecurity Intern, Level 1 SOC Analyst":"متدرّب أمن سيبراني، محلل SOC من المستوى الأول",
+    "Java Programming":"برمجة Java","Arabic and English":"العربية والإنجليزية","Arabic native, English professional working proficiency.":"العربية لغتي الأم، والإنجليزية بمستوى عمل مهني.",
+    "Good to know":"معلومات مفيدة","Questions people ask me":"أسئلة تُطرح عليّ",
+    "Are you open to full-time roles?":"هل أنت متاح لوظيفة بدوام كامل؟","Yes. I'm looking for IT infrastructure, network, systems and automation roles, on-site in Iraq or remote.":"نعم. أبحث عن وظائف في البنية التحتية لتقنية المعلومات والشبكات والأنظمة والأتمتة، حضوريًا في العراق أو عن بُعد.",
+    "Do you take freelance or project work?":"هل تعمل على مشاريع مستقلة؟","Yes. I take IT infrastructure and automation projects on the side, from a single office network to a full building.":"نعم. أنفّذ مشاريع البنية التحتية والأتمتة إلى جانب عملي، من شبكة مكتب واحد إلى مبنى كامل.",
+    "Which equipment do you work with?":"ما الأجهزة التي تعمل عليها؟","MikroTik, Cisco, Ubiquiti UniFi, TP-Link, Huawei and Fortinet FortiGate for networks and security; Hikvision, Dahua and ZKTeco for CCTV and access control; Synology for storage and Grandstream for voice.":"MikroTik وCisco وUbiquiti UniFi وTP-Link وHuawei وFortinet FortiGate للشبكات والحماية؛ وHikvision وDahua وZKTeco لكاميرات المراقبة وأنظمة الدخول؛ وSynology للتخزين وGrandstream للاتصالات.",
+    "What do I get at the end of a project?":"ماذا أستلم في نهاية المشروع؟","Full documentation: cable maps, device lists and credentials, so the next person can run the site without guessing.":"توثيق كامل: خرائط الكابلات وقوائم الأجهزة وبيانات الدخول، ليتمكن أي شخص بعدي من إدارة الموقع دون تخمين.",
+    "Which languages do you work in?":"بأي لغات تعمل؟","Arabic (native) and English (professional working proficiency).":"العربية (اللغة الأم) والإنجليزية (مستوى عمل مهني).",
+    "For IT infrastructure, network, systems or automation roles and projects. WhatsApp is the fastest way to reach me.":"لوظائف ومشاريع البنية التحتية والشبكات والأنظمة والأتمتة. واتساب هو أسرع طريقة للتواصل معي.",
+    "Yousif Abdulkareem Al-Sara, Baghdad, Iraq":"Yousif Abdulkareem Al-Sara، بغداد، العراق","Back to top":"العودة إلى الأعلى",
+    /* attributes */
+    "Yousif Al-Sara, home":"Yousif Al-Sara، الصفحة الرئيسية","Sections":"الأقسام","Highlights":"أبرز الأرقام","Client list":"قائمة العملاء","Equipment brands":"علامات الأجهزة","Filter projects":"تصفية المشاريع","Profiles":"الحسابات","Message Yousif on WhatsApp":"راسل يوسف على واتساب","Close":"إغلاق",
+    "Portrait of Yousif Abdulkareem Al-Sara":"صورة Yousif Abdulkareem Al-Sara","Sama Babil logo":"شعار سما بابل","Abwaab logo":"شعار أبواب","Ameena logo":"شعار أمينة","Blueprint drawing of the Smart CNC Plotter":"رسم هندسي لآلة Smart CNC Plotter"
+  };
+  /* ---------- small UI strings ---------- */
+  var UI = {
+    en:{more:"View project",kindInfra:"Infrastructure project",scope:"Scope",highlights:"Highlights",built:"Built with",live:"Live site",code:"Code",note:"Handed over with cable maps, device lists and credentials.",priv:"Private",open:"Open menu",close:"Close menu",
+        wa:"Hi Yousif, I saw your portfolio and I'd like to talk with you.",title:"Yousif Abdulkareem Al-Sara | IT Infrastructure & Operations Engineer, Baghdad",
+        desc:"IT infrastructure engineer in Baghdad: networks, firewalls, Wi-Fi, CCTV and access control, cloud and email, plus AI-driven automation. Experience, client sites and projects.",
+        roles:["IT Infrastructure Engineer","AI & Automation Developer"],toggle:"عربي",toggleLabel:"عرض الموقع بالعربية"},
+    ar:{more:"عرض المشروع",kindInfra:"مشروع بنية تحتية",scope:"نطاق العمل",highlights:"أبرز النقاط",built:"التقنيات المستخدمة",live:"الموقع",code:"الكود",note:"سُلّم مع خرائط الكابلات وقوائم الأجهزة وبيانات الدخول.",priv:"خاص",open:"فتح القائمة",close:"إغلاق القائمة",
+        wa:"مرحبًا يوسف، شاهدتُ موقعك الشخصي وأودّ التواصل معك.",title:"Yousif Abdulkareem Al-Sara | مهندس بنية تحتية وتشغيل تقنية المعلومات، بغداد",
+        desc:"مهندس بنية تحتية لتقنية المعلومات في بغداد: الشبكات والجدران النارية والواي فاي وكاميرات المراقبة وأنظمة الدخول والسحابة والبريد، مع أتمتة تعتمد على الذكاء الاصطناعي.",
+        roles:["مهندس بنية تحتية لتقنية المعلومات","مطوّر ذكاء اصطناعي وأتمتة"],toggle:"EN",toggleLabel:"View the site in English"}
+  };
+  function T(k){ return UI[LANG][k]; }
+  var LABEL = {en:{network:"Network",wifi:"Wi-Fi",cctv:"CCTV",access:"Access control",cabling:"Cabling"},
+               ar:{network:"الشبكة",wifi:"واي فاي",cctv:"كاميرات المراقبة",access:"أنظمة الدخول",cabling:"الكابلات"}};
+
+  /* ---------- project data (English and Arabic) ---------- */
   var INFRA = [
-    {id:"hq", t:"Abwaab and Ameena headquarters", logos:["abwaab","ameena"], img:"hq", f:["network","wifi","cctv","access","cabling"],
-     s:"Full IT fitout of a four-floor headquarters with 300+ devices.",
-     lead:"A four-floor headquarters taken from an empty building to a fully working office for two companies.",
-     scope:["Structured cabling and per-floor racks","Switching and Wi-Fi on every floor","Building-wide IP CCTV","Fingerprint access control","VoIP and electrical","300+ PCs and network printing"]},
-    {id:"majal", t:"Al Majal Business Park", logos:["al-majal"], img:"majal", f:["network","cctv","access","cabling"],
-     s:"Fitout of an eight-floor multi-tenant commercial building.",
-     lead:"Building-wide infrastructure for an eight-floor commercial building with many tenants.",
-     scope:["Building network","CCTV","Structured cabling","Access control","Internet delivery to tenants"]},
-    {id:"geely", t:"Geely office, Al Majal", logos:["geely"], img:"majal", f:["network","wifi"],
-     s:"Network and Wi-Fi for the Geely office, on the building network.",
-     lead:"The Geely office inside Al Majal Business Park, connected through the building network.",
-     scope:["Office network","Wi-Fi","Connection to the building network"]},
-    {id:"uber", t:"Uber Iraq office", logos:["uber"], img:"uber", f:["network","wifi","cabling"],
-     s:"Office network: switches, cabling and Wi-Fi.",
-     lead:"The office network for Uber in Iraq.",
-     scope:["Switches","Cabling","Wi-Fi"]},
-    {id:"careem", t:"Careem Iraq", logos:["careem"], img:"careem", f:["network","cctv"],
-     s:"Office network infrastructure and a CCTV system.",
-     lead:"Network infrastructure and CCTV for the Careem office in Iraq.",
-     scope:["Office network infrastructure","CCTV system installation"]},
-    {id:"warehouse", t:"Ameena warehouse", logos:["ameena"], img:"warehouse", f:["cctv","cabling"],
-     s:"Structured cabling and CCTV across the full warehouse.",
-     lead:"A full warehouse covered end to end, built from scratch.",
-     scope:["Structured cabling across the warehouse","CCTV coverage of the full site"]},
-    {id:"abwaab-old", t:"Abwaab old office", logos:["abwaab"], img:"abwaaboffice", f:["network","wifi","cabling"],
-     s:"Complete office network with switches, access points and patch panels.",
-     lead:"A complete office network for Abwaab's original office.",
-     scope:["Switches","Access points","Patch panels","Structured cabling"]},
-    {id:"abwaab-cafe", t:"Abwaab café office", logos:["abwaab"], img:"cafe", f:["network","wifi","cctv"],
-     s:"Temporary office during the move: CCTV, full network and Wi-Fi.",
-     lead:"A temporary office set up so the team could keep working during the move.",
-     scope:["CCTV","Full network","Wi-Fi"]},
-    {id:"ameena-old", t:"Ameena old office", logos:["ameena"], img:"ameenaoffice", f:["network","cabling"],
-     s:"Structured cabling, full network setup and patch organisation.",
-     lead:"Ameena's original office, rebuilt and organised.",
-     scope:["Structured cabling","Full network setup","Patch organisation"]},
-    {id:"jplaw", t:"JP Law Group", logos:["jp-law-firm"], img:"jplaw", f:["network","cabling"],
-     s:"A secure, structured network for a law firm.",
-     lead:"A law firm's office network, built to keep client data separated and secure.",
-     scope:["Secure network","Structured cabling"]},
-    {id:"serviced", t:"Workspace serviced offices", logos:["workspace"], img:"serviced", f:["network","wifi"],
-     s:"Managed network and Wi-Fi across 15 rented offices in Baghdad.",
-     lead:"A serviced-office complex in Baghdad with 15 rented offices on one managed network.",
-     scope:["Managed network for 15 offices","Wi-Fi across the complex"]}
+    {id:"hq", logos:["abwaab","ameena"], img:"hq", f:["network","wifi","cctv","access","cabling"],
+     en:{t:"Abwaab and Ameena headquarters", s:"Full IT fitout of a four-floor headquarters with 300+ devices.", lead:"A four-floor headquarters taken from an empty building to a fully working office for two companies.",
+         scope:["Structured cabling and per-floor racks","Switching and Wi-Fi on every floor","Building-wide IP CCTV","Fingerprint access control","VoIP and electrical","300+ PCs and network printing"]},
+     ar:{t:"المقر الرئيسي لأبواب وأمينة", s:"تجهيز كامل لتقنية المعلومات في مقر من أربعة طوابق بأكثر من 300 جهاز.", lead:"مقر رئيسي من أربعة طوابق، نُقل من مبنى فارغ إلى مكتب يعمل بالكامل لشركتين.",
+         scope:["كابلات مهيكلة وخزائن شبكة لكل طابق","سويتشات وواي فاي في كل طابق","كاميرات IP تغطي المبنى","بصمة للتحكم بالدخول","هاتف شبكي VoIP وأعمال كهربائية","أكثر من 300 حاسوب وطباعة شبكية"]}},
+    {id:"majal", logos:["al-majal"], img:"majal", f:["network","cctv","access","cabling"],
+     en:{t:"Al Majal Business Park", s:"Fitout of an eight-floor multi-tenant commercial building.", lead:"Building-wide infrastructure for an eight-floor commercial building with many tenants.",
+         scope:["Building network","CCTV","Structured cabling","Access control","Internet delivery to tenants"]},
+     ar:{t:"مجمع المجال للأعمال", s:"تجهيز مبنى تجاري متعدد المستأجرين من ثمانية طوابق.", lead:"بنية تحتية تغطي مبنى تجاريًا من ثمانية طوابق يضم مستأجرين متعددين.",
+         scope:["شبكة المبنى","كاميرات المراقبة","كابلات مهيكلة","أنظمة الدخول","إيصال الإنترنت إلى المستأجرين"]}},
+    {id:"geely", logos:["geely"], img:"majal", f:["network","wifi"],
+     en:{t:"Geely office, Al Majal", s:"Network and Wi-Fi for the Geely office, on the building network.", lead:"The Geely office inside Al Majal Business Park, connected through the building network.",
+         scope:["Office network","Wi-Fi","Connection to the building network"]},
+     ar:{t:"مكتب جيلي في المجال", s:"شبكة وواي فاي لمكتب جيلي، على شبكة المبنى.", lead:"مكتب جيلي داخل مجمع المجال للأعمال، موصول عبر شبكة المبنى.",
+         scope:["شبكة المكتب","واي فاي","الربط بشبكة المبنى"]}},
+    {id:"uber", logos:["uber"], img:"uber", f:["network","wifi","cabling"],
+     en:{t:"Uber Iraq office", s:"Office network: switches, cabling and Wi-Fi.", lead:"The office network for Uber in Iraq.", scope:["Switches","Cabling","Wi-Fi"]},
+     ar:{t:"مكتب أوبر في العراق", s:"شبكة المكتب: سويتشات وكابلات وواي فاي.", lead:"شبكة المكتب لأوبر في العراق.", scope:["سويتشات","كابلات","واي فاي"]}},
+    {id:"careem", logos:["careem"], img:"careem", f:["network","cctv"],
+     en:{t:"Careem Iraq", s:"Office network infrastructure and a CCTV system.", lead:"Network infrastructure and CCTV for the Careem office in Iraq.", scope:["Office network infrastructure","CCTV system installation"]},
+     ar:{t:"كريم العراق", s:"بنية شبكة المكتب ونظام كاميرات مراقبة.", lead:"بنية الشبكة وكاميرات المراقبة لمكتب كريم في العراق.", scope:["بنية شبكة المكتب","تركيب نظام كاميرات المراقبة"]}},
+    {id:"warehouse", logos:["ameena"], img:"warehouse", f:["cctv","cabling"],
+     en:{t:"Ameena warehouse", s:"Structured cabling and CCTV across the full warehouse.", lead:"A full warehouse covered end to end, built from scratch.", scope:["Structured cabling across the warehouse","CCTV coverage of the full site"]},
+     ar:{t:"مستودع أمينة", s:"كابلات مهيكلة وكاميرات مراقبة تغطي المستودع بالكامل.", lead:"مستودع كامل مغطّى من البداية إلى النهاية، مبني من الصفر.", scope:["كابلات مهيكلة في أنحاء المستودع","كاميرات مراقبة تغطي الموقع بالكامل"]}},
+    {id:"abwaab-old", logos:["abwaab"], img:"abwaaboffice", f:["network","wifi","cabling"],
+     en:{t:"Abwaab old office", s:"Complete office network with switches, access points and patch panels.", lead:"A complete office network for Abwaab's original office.", scope:["Switches","Access points","Patch panels","Structured cabling"]},
+     ar:{t:"مكتب أبواب القديم", s:"شبكة مكتب كاملة مع سويتشات ونقاط وصول ولوحات توزيع.", lead:"شبكة مكتب كاملة لمكتب أبواب الأول.", scope:["سويتشات","نقاط وصول","لوحات توزيع","كابلات مهيكلة"]}},
+    {id:"abwaab-cafe", logos:["abwaab"], img:"cafe", f:["network","wifi","cctv"],
+     en:{t:"Abwaab café office", s:"Temporary office during the move: CCTV, full network and Wi-Fi.", lead:"A temporary office set up so the team could keep working during the move.", scope:["CCTV","Full network","Wi-Fi"]},
+     ar:{t:"مكتب أبواب المؤقت", s:"مكتب مؤقت أثناء الانتقال: كاميرات مراقبة وشبكة كاملة وواي فاي.", lead:"مكتب مؤقت جُهّز ليواصل الفريق عمله أثناء الانتقال.", scope:["كاميرات المراقبة","شبكة كاملة","واي فاي"]}},
+    {id:"ameena-old", logos:["ameena"], img:"ameenaoffice", f:["network","cabling"],
+     en:{t:"Ameena old office", s:"Structured cabling, full network setup and patch organisation.", lead:"Ameena's original office, rebuilt and organised.", scope:["Structured cabling","Full network setup","Patch organisation"]},
+     ar:{t:"مكتب أمينة القديم", s:"كابلات مهيكلة وإعداد شبكة كامل وتنظيم لوحات التوزيع.", lead:"مكتب أمينة الأول، أُعيد بناؤه وتنظيمه.", scope:["كابلات مهيكلة","إعداد شبكة كامل","تنظيم لوحات التوزيع"]}},
+    {id:"jplaw", logos:["jp-law-firm"], img:"jplaw", f:["network","cabling"],
+     en:{t:"JP Law Group", s:"A secure, structured network for a law firm.", lead:"A law firm's office network, built to keep client data separated and secure.", scope:["Secure network","Structured cabling"]},
+     ar:{t:"مجموعة JP للمحاماة", s:"شبكة آمنة ومهيكلة لمكتب محاماة.", lead:"شبكة مكتب محاماة مبنية لتبقى بيانات الموكّلين منفصلة وآمنة.", scope:["شبكة آمنة","كابلات مهيكلة"]}},
+    {id:"serviced", logos:["workspace"], img:"serviced", f:["network","wifi"],
+     en:{t:"Workspace serviced offices", s:"Managed network and Wi-Fi across 15 rented offices in Baghdad.", lead:"A serviced-office complex in Baghdad with 15 rented offices on one managed network.", scope:["Managed network for 15 offices","Wi-Fi across the complex"]},
+     ar:{t:"مكاتب ورك سبيس المؤجّرة", s:"شبكة وواي فاي مُدارة عبر 15 مكتبًا مؤجّرًا في بغداد.", lead:"مجمع مكاتب مؤجّرة في بغداد يضم 15 مكتبًا على شبكة واحدة مُدارة.", scope:["شبكة مُدارة لـ 15 مكتبًا","واي فاي يغطي المجمع"]}}
   ];
   var WORK = [
-    {id:"lowcarb", big:true, k:"Platform", t:"Low Carb meal-subscription platform", img:"img/shots/lowcarb.webp",
-     s:"Marketing site, customer app and staff order system on one backend.",
-     lead:"For a Baghdad kitchen: a public marketing site, plus a customer app and a staff order-management system on the same Supabase backend, with Row-Level Security, scheduled automation and a deploy pipeline gated by 92 end-to-end tests.",
-     scope:["Customer PWA for subscriptions and deliveries","Staff system for orders, payments and menus","Row-Level Security on every table","Nightly expiry scans and daily delivery lists","92 Playwright tests on Chromium and WebKit","Cloudflare Pages with a Netlify mirror"],
-     stack:"React, Vite, Supabase, Cloudflare Pages, GitHub Actions, Playwright",
-     links:[["Live site","https://lowcarb-site.pages.dev"],["Code","https://github.com/yousif4business-collab/lowcarb-site"]]},
-    {id:"eg", big:true, k:"Website", t:"English Gate Academy", img:"img/shots/englishgate.webp",
-     s:"Bilingual one-page site for an English academy in Baghdad.",
-     lead:"One-page bilingual website with full right-to-left Arabic, programme detail views, self-hosted videos and a 3D street scene.",
-     scope:["Full Arabic and English, never mixed","WhatsApp message builder, no forms","No cookies, analytics or tracking","SEO and AI-search structured data","Cross-browser test matrix","Post-deploy routing gate"],
-     stack:"Vite, Cloudflare Pages, Netlify mirror, Playwright",
-     links:[["Live site","https://englishgate-school.com"],["Code","https://github.com/yousif4business-collab/englishgate-website"]]},
-    {id:"rawafid", big:true, k:"Website", t:"Rawafid", img:"img/shots/rawafid.webp",
-     s:"Website for an IT services company in Iraq.",
-     lead:"Website for an IT services company in Iraq: services, real projects with 3D building models, process, FAQ and WhatsApp contact, in Arabic and English.",
-     scope:["Services and real projects","3D building models per project","Arabic and English","WhatsApp contact, no forms"],
-     stack:"HTML, CSS, JavaScript, Cloudflare",
-     links:[["Live site","https://rawafid.space"]]},
-    {id:"aklaat", big:true, k:"Ordering site", t:"Aklaat Al-Baraka", img:"img/shots/aklaat.webp",
-     s:"One-file ordering site for a home-style Iraqi kitchen.",
-     lead:"One-file ordering site for a home-style Iraqi kitchen.",
-     scope:["Menu and cart","Delivery fees by area","WhatsApp ordering with order numbers","Location sharing"],
-     stack:"HTML, CSS, JavaScript",
-     links:[["Code","https://github.com/yousif4business-collab/aklaat-albaraka"]]},
-    {id:"lavender", big:true, k:"Online store", t:"Lavender", img:"img/shots/lavender.webp",
-     s:"Arabic store for natural hair and skin-care products.",
-     lead:"Arabic store for natural hair and skin-care products, with ordering through WhatsApp.",
-     scope:["Product catalogue","Bundles","Ordering through WhatsApp"],
-     stack:"Netlify",
-     links:[["Live site","https://lavender-dbd.netlify.app"]]},
-    {id:"cnc", big:true, k:"Hardware", t:"Smart CNC Plotter", img:"img/cnc.svg",
-     s:"Graduation project: a cost-effective three-axis CNC for engraving and carving.",
-     lead:"A cost-effective three-axis CNC that engraves and carves wood, plastic and cardboard. Designs go from CamBam to Universal G-code Sender to the Arduino.",
-     scope:["Arduino UNO and CNC Shield V3","A4988 drivers and NEMA 17 steppers","775 spindle motor","3D-printed parts","Cost-effective build from standard parts"],
-     stack:"Arduino, G-code, CamBam, UGS, 3D printing",
-     links:[["Code","https://github.com/yousif4business-collab/smart-cnc-plotter"]]}
+    {id:"lowcarb", img:"img/shots/lowcarb.webp", stack:"React, Vite, Supabase, Cloudflare Pages, GitHub Actions, Playwright",
+     links:[["live","https://lowcarb-site.pages.dev"],["code","https://github.com/yousif4business-collab/lowcarb-site"]],
+     en:{k:"Platform", t:"Low Carb meal-subscription platform", s:"Marketing site, customer app and staff order system on one backend.",
+         lead:"For a Baghdad kitchen: a public marketing site, plus a customer app and a staff order-management system on the same Supabase backend, with Row-Level Security, scheduled automation and a deploy pipeline gated by 92 end-to-end tests.",
+         scope:["Customer PWA for subscriptions and deliveries","Staff system for orders, payments and menus","Row-Level Security on every table","Nightly expiry scans and daily delivery lists","92 Playwright tests on Chromium and WebKit","Cloudflare Pages with a Netlify mirror"]},
+     ar:{k:"منصّة", t:"منصّة Low Carb لاشتراكات الوجبات", s:"موقع تسويقي وتطبيق للزبائن ونظام طلبات للموظفين على خلفية واحدة.",
+         lead:"لمطبخ في بغداد: موقع تسويقي عام، وتطبيق للزبائن، ونظام لإدارة الطلبات للموظفين على خلفية Supabase واحدة، مع أمان على مستوى الصفوف، وأتمتة مجدولة، ونشر محمي بـ 92 اختبارًا شاملًا.",
+         scope:["تطبيق PWA للزبائن للاشتراكات والتوصيل","نظام للموظفين للطلبات والمدفوعات والقوائم","أمان على مستوى الصفوف في كل جدول","فحص ليلي لانتهاء الاشتراكات وقوائم توصيل يومية","92 اختبار Playwright على Chromium وWebKit","Cloudflare Pages مع نسخة على Netlify"]}},
+    {id:"eg", img:"img/shots/englishgate.webp", stack:"Vite, Cloudflare Pages, Netlify mirror, Playwright",
+     links:[["live","https://englishgate-school.com"],["code","https://github.com/yousif4business-collab/englishgate-website"]],
+     en:{k:"Website", t:"English Gate Academy", s:"Bilingual one-page site for an English academy in Baghdad.",
+         lead:"One-page bilingual website with full right-to-left Arabic, programme detail views, self-hosted videos and a 3D street scene.",
+         scope:["Full Arabic and English, never mixed","WhatsApp message builder, no forms","No cookies, analytics or tracking","SEO and AI-search structured data","Cross-browser test matrix","Post-deploy routing gate"]},
+     ar:{k:"موقع إلكتروني", t:"أكاديمية انكلش كيت", s:"موقع ثنائي اللغة من صفحة واحدة لأكاديمية لغة إنجليزية في بغداد.",
+         lead:"موقع ثنائي اللغة من صفحة واحدة بعربية كاملة من اليمين إلى اليسار، وصفحات تفاصيل للبرامج، وفيديوهات مستضافة ذاتيًا، ومشهد شارع ثلاثي الأبعاد.",
+         scope:["عربي وإنجليزي كاملان دون خلط","منشئ رسائل واتساب بدل النماذج","دون كوكيز أو تحليلات أو تتبّع","بيانات منظّمة لمحركات البحث والبحث بالذكاء الاصطناعي","اختبارات على عدة متصفحات","تحقق من التوجيه بعد كل نشر"]}},
+    {id:"rawafid", img:"img/shots/rawafid.webp", stack:"HTML, CSS, JavaScript, Cloudflare",
+     links:[["live","https://rawafid.space"]],
+     en:{k:"Website", t:"Rawafid", s:"Website for an IT services company in Iraq.",
+         lead:"Website for an IT services company in Iraq: services, real projects with 3D building models, process, FAQ and WhatsApp contact, in Arabic and English.",
+         scope:["Services and real projects","3D building models per project","Arabic and English","WhatsApp contact, no forms"]},
+     ar:{k:"موقع إلكتروني", t:"روافد", s:"موقع لشركة خدمات تقنية معلومات في العراق.",
+         lead:"موقع لشركة خدمات تقنية معلومات في العراق: الخدمات، ومشاريع حقيقية بنماذج مبانٍ ثلاثية الأبعاد، وطريقة العمل، والأسئلة الشائعة، والتواصل عبر واتساب، بالعربية والإنجليزية.",
+         scope:["الخدمات والمشاريع الحقيقية","نموذج ثلاثي الأبعاد لكل مشروع","عربي وإنجليزي","تواصل عبر واتساب دون نماذج"]}},
+    {id:"aklaat", img:"img/shots/aklaat.webp", stack:"HTML, CSS, JavaScript",
+     links:[["code","https://github.com/yousif4business-collab/aklaat-albaraka"]],
+     en:{k:"Ordering site", t:"Aklaat Al-Baraka", s:"One-file ordering site for a home-style Iraqi kitchen.", lead:"One-file ordering site for a home-style Iraqi kitchen.",
+         scope:["Menu and cart","Delivery fees by area","WhatsApp ordering with order numbers","Location sharing"]},
+     ar:{k:"موقع طلبات", t:"أكلات البركة", s:"موقع طلبات من ملف واحد لمطبخ عراقي بطابع منزلي.", lead:"موقع طلبات من ملف واحد لمطبخ عراقي بطابع منزلي.",
+         scope:["قائمة طعام وسلة","أجور توصيل حسب المنطقة","طلب عبر واتساب برقم للطلب","مشاركة الموقع الجغرافي"]}},
+    {id:"lavender", img:"img/shots/lavender.webp", stack:"Netlify",
+     links:[["live","https://lavender-dbd.netlify.app"]],
+     en:{k:"Online store", t:"Lavender", s:"Arabic store for natural hair and skin-care products.", lead:"Arabic store for natural hair and skin-care products, with ordering through WhatsApp.",
+         scope:["Product catalogue","Bundles","Ordering through WhatsApp"]},
+     ar:{k:"متجر إلكتروني", t:"لافندر", s:"متجر عربي لمنتجات العناية الطبيعية بالشعر والبشرة.", lead:"متجر عربي لمنتجات العناية الطبيعية بالشعر والبشرة، مع الطلب عبر واتساب.",
+         scope:["كتالوج المنتجات","البكجات","الطلب عبر واتساب"]}},
+    {id:"cnc", img:"img/cnc.svg", stack:"Arduino, G-code, CamBam, UGS, 3D printing",
+     links:[["code","https://github.com/yousif4business-collab/smart-cnc-plotter"]],
+     en:{k:"Hardware", t:"Smart CNC Plotter", s:"Graduation project: a cost-effective three-axis CNC for engraving and carving.",
+         lead:"A cost-effective three-axis CNC that engraves and carves wood, plastic and cardboard. Designs go from CamBam to Universal G-code Sender to the Arduino.",
+         scope:["Arduino UNO and CNC Shield V3","A4988 drivers and NEMA 17 steppers","775 spindle motor","3D-printed parts","Cost-effective build from standard parts"]},
+     ar:{k:"أجهزة", t:"آلة Smart CNC Plotter", s:"مشروع التخرج: آلة CNC ثلاثية المحاور واقتصادية للنقش والحفر.",
+         lead:"آلة CNC ثلاثية المحاور واقتصادية التكلفة تنقش وتحفر على الخشب والبلاستيك والكرتون. تنتقل التصاميم من CamBam إلى Universal G-code Sender ثم إلى Arduino.",
+         scope:["Arduino UNO وCNC Shield V3","مشغّلات A4988 ومحركات NEMA 17","محرك مغزل 775","قطع مطبوعة بالطباعة ثلاثية الأبعاد","بناء اقتصادي من قطع متوفرة"]}}
   ];
-  var LABEL = {network:"Network",wifi:"Wi-Fi",cctv:"CCTV",access:"Access control",cabling:"Cabling"};
 
   function el(html){ var d=document.createElement("div"); d.innerHTML=html.trim(); return d.firstChild; }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
-  function more(kind,id,t){ return '<button class="more" type="button" data-kind="'+kind+'" data-id="'+id+'" aria-label="View project: '+esc(t)+'">View project<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>'; }
+  function more(kind,id,t){ return '<button class="more" type="button" data-kind="'+kind+'" data-id="'+id+'" aria-label="'+esc(T("more")+": "+t)+'">'+esc(T("more"))+'<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>'; }
 
-  var infra = document.getElementById("infra");
-  INFRA.forEach(function(p){
-    var logos = p.logos.map(function(l){return '<img src="img/clients/'+l+'.webp" width="144" height="144" alt="">';}).join("");
-    var tags = p.f.map(function(f){return '<span class="tag">'+LABEL[f]+'</span>';}).join("");
-    var b = el('<article class="proj rv" data-f="'+p.f.join(" ")+'">'+
-      '<div class="pic"><img src="img/models/'+p.img+'.webp" width="960" height="600" alt="" loading="lazy"><div class="badge">'+logos+'</div></div>'+
-      '<div class="body"><h3>'+esc(p.t)+'</h3><p>'+esc(p.s)+'</p><div class="tags">'+tags+'</div>'+more("infra",p.id,p.t)+'</div></article>');
-    infra.appendChild(b);
-  });
-  var work = document.getElementById("work");
-  WORK.forEach(function(p){
-    var pic = p.img ? '<div class="pic"><img src="'+p.img+'" width="800" height="500" alt="" loading="lazy">'+(p.priv?'<span class="private">Private</span>':'')+'</div>'
-                    : '<div class="pic locked"><svg aria-hidden="true"><use href="#i-lock"/></svg><span class="private">Private</span></div>';
-    var b = el('<article class="proj rv'+(p.big?' big':'')+'">'+pic+
-      '<div class="body"><span class="kind">'+esc(p.k)+'</span><h3>'+esc(p.t)+'</h3><p>'+esc(p.s)+'</p>'+more("work",p.id,p.t)+'</div></article>');
-    work.appendChild(b);
-  });
+  /* ---------- render project cards ---------- */
+  var infra = document.getElementById("infra"), work = document.getElementById("work"), currentFilter = "all", firstRender = true;
+  function renderCards(){
+    var cls = firstRender ? "proj rv" : "proj rv in";
+    infra.innerHTML = ""; work.innerHTML = "";
+    INFRA.forEach(function(p){
+      var d = p[LANG];
+      var logos = p.logos.map(function(l){return '<img src="img/clients/'+l+'.webp" width="144" height="144" alt="">';}).join("");
+      var tags = p.f.map(function(f){return '<span class="tag">'+LABEL[LANG][f]+'</span>';}).join("");
+      var show = currentFilter==="all" || p.f.indexOf(currentFilter)>-1;
+      var b = el('<article class="'+cls+'" data-f="'+p.f.join(" ")+'"'+(show?'':' hidden')+'>'+
+        '<div class="pic"><img src="img/models/'+p.img+'.webp" width="960" height="600" alt="" loading="lazy"><div class="badge">'+logos+'</div></div>'+
+        '<div class="body"><h3>'+esc(d.t)+'</h3><p>'+esc(d.s)+'</p><div class="tags">'+tags+'</div>'+more("infra",p.id,d.t)+'</div></article>');
+      infra.appendChild(b);
+    });
+    WORK.forEach(function(p){
+      var d = p[LANG];
+      var b = el('<article class="'+cls+' big"><div class="pic"><img src="'+p.img+'" width="800" height="500" alt="" loading="lazy"></div>'+
+        '<div class="body"><span class="kind">'+esc(d.k)+'</span><h3>'+esc(d.t)+'</h3><p>'+esc(d.s)+'</p>'+more("work",p.id,d.t)+'</div></article>');
+      work.appendChild(b);
+    });
+    firstRender = false;
+  }
 
   /* ---------- modal ---------- */
   var modal = document.getElementById("modal"), mc = document.getElementById("m-content"), lastFocus = null;
   function openModal(kind,id){
     var p = (kind==="infra"?INFRA:WORK).filter(function(x){return x.id===id;})[0]; if(!p) return;
+    var d = p[LANG];
     var img = kind==="infra" ? "img/models/"+p.img+".webp" : p.img;
-    var html = (img ? '<div class="m-pic"><img src="'+img+'" alt=""></div>' : '<div class="m-pic"><div class="pic locked" style="position:absolute;inset:0"><svg style="width:84px;height:84px;color:var(--cyan)"><use href="#i-lock"/></svg></div></div>')+
-      '<div class="m-body"><span class="kind">'+(kind==="infra"?"Infrastructure project":esc(p.k))+'</span>'+
-      '<h3 id="m-title">'+esc(p.t)+'</h3><p class="lead">'+esc(p.lead)+'</p>'+
-      '<h4>'+(kind==="infra"?"Scope":"Highlights")+'</h4><ul class="scope">'+p.scope.map(function(s){return "<li>"+esc(s)+"</li>";}).join("")+'</ul>';
+    var html = '<div class="m-pic"><img src="'+img+'" alt=""></div>'+
+      '<div class="m-body"><span class="kind">'+(kind==="infra"?esc(T("kindInfra")):esc(d.k))+'</span>'+
+      '<h3 id="m-title">'+esc(d.t)+'</h3><p class="lead">'+esc(d.lead)+'</p>'+
+      '<h4>'+esc(kind==="infra"?T("scope"):T("highlights"))+'</h4><ul class="scope">'+d.scope.map(function(s){return "<li>"+esc(s)+"</li>";}).join("")+'</ul>';
     if(kind==="infra"){
       html += '<div class="tags" style="margin-top:22px">'+p.logos.map(function(l){return '<img src="img/clients/'+l+'.webp" width="40" height="40" alt="" style="width:40px;height:40px;border-radius:50%">';}).join("")+'</div>';
-      html += '<p class="m-note">Delivered through Rawafid and handed over with cable maps, device lists and credentials.</p>';
+      html += '<p class="m-note">'+esc(T("note"))+'</p>';
     } else {
-      html += '<h4>Built with</h4><p class="lead" style="margin-top:8px">'+esc(p.stack)+'</p>';
-      if(p.links.length) html += '<div class="actions">'+p.links.map(function(l,i){return '<a class="btn '+(i===0?'btn-blue':'btn-ghost')+'" href="'+l[1]+'" target="_blank" rel="noopener">'+(l[0]==="Code"?'<svg><use href="#i-gh"/></svg>':'')+esc(l[0])+'</a>';}).join("")+'</div>';
+      html += '<h4>'+esc(T("built"))+'</h4><p class="lead" dir="ltr" style="margin-top:8px;text-align:start">'+esc(p.stack)+'</p>';
+      if(p.links.length) html += '<div class="actions">'+p.links.map(function(l,i){return '<a class="btn '+(i===0?'btn-blue':'btn-ghost')+'" href="'+l[1]+'" target="_blank" rel="noopener">'+(l[0]==="code"?'<svg><use href="#i-gh"/></svg>':'')+esc(T(l[0]))+'</a>';}).join("")+'</div>';
     }
     html += '</div>';
     mc.innerHTML = html;
+    modal.querySelector(".m-close").setAttribute("aria-label", LANG==="ar" ? AR["Close"] : "Close");
     lastFocus = document.activeElement;
     if(typeof modal.showModal === "function"){ modal.showModal(); } else { modal.setAttribute("open",""); }
     modal.scrollTop = 0;
@@ -957,19 +1088,56 @@ dialog.modal[open]{animation:pop .28s ease}
   /* ---------- filters ---------- */
   var fbtns = [].slice.call(document.querySelectorAll(".filter"));
   fbtns.forEach(function(b){ b.addEventListener("click", function(){
-    var f = b.dataset.f;
+    currentFilter = b.dataset.f;
     fbtns.forEach(function(x){ x.setAttribute("aria-pressed", String(x===b)); });
     infra.querySelectorAll(".proj").forEach(function(c){
-      var show = f==="all" || (" "+c.dataset.f+" ").indexOf(" "+f+" ")>-1;
+      var show = currentFilter==="all" || (" "+c.dataset.f+" ").indexOf(" "+currentFilter+" ")>-1;
       c.hidden = !show; if(show) c.classList.add("in");
     });
   }); });
 
   /* ---------- marquee duplicates ---------- */
   document.querySelectorAll(".marquee .track").forEach(function(t){
-    var kids = [].slice.call(t.children);
-    kids.forEach(function(k){ var c = k.cloneNode(true); c.setAttribute("aria-hidden","true"); c.querySelectorAll("img").forEach(function(i){i.alt="";}); t.appendChild(c); });
+    [].slice.call(t.children).forEach(function(k){ var c = k.cloneNode(true); c.setAttribute("aria-hidden","true"); c.querySelectorAll("img").forEach(function(i){i.alt="";}); t.appendChild(c); });
   });
+
+  /* ---------- language switch ---------- */
+  var textNodes = [], attrEls = [], htmlEls = [].slice.call(document.querySelectorAll("[data-ar]"));
+  (function collect(){
+    var skip = "#infra,#work,#m-content,script,style,svg,[data-ar],.mark,h1";
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
+      if(!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      if(n.parentElement && n.parentElement.closest(skip)) return NodeFilter.FILTER_REJECT;
+      return AR[n.nodeValue.trim()] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }});
+    var n; while((n = w.nextNode())) textNodes.push({n:n, en:n.nodeValue});
+    document.querySelectorAll("[aria-label],[alt]").forEach(function(e){
+      if(e.closest("#infra,#work,#m-content")) return;
+      ["aria-label","alt"].forEach(function(a){ var v = e.getAttribute(a); if(v && AR[v]) attrEls.push({e:e, a:a, en:v}); });
+    });
+    htmlEls.forEach(function(e){ e.dataset.en = e.innerHTML; });
+  })();
+  var langBtn = document.getElementById("lang"), metaDesc = document.querySelector('meta[name="description"]');
+  function setLang(l, save){
+    LANG = l === "ar" ? "ar" : "en";
+    var ar = LANG === "ar";
+    document.documentElement.lang = LANG; document.documentElement.dir = ar ? "rtl" : "ltr"; document.documentElement.classList.remove("pre");
+    textNodes.forEach(function(x){ var k = x.en.trim(); x.n.nodeValue = ar ? x.en.replace(k, AR[k]) : x.en; });
+    attrEls.forEach(function(x){ x.e.setAttribute(x.a, ar ? AR[x.en] : x.en); });
+    htmlEls.forEach(function(e){ e.innerHTML = ar ? e.dataset.ar : e.dataset.en; });
+    document.title = T("title"); if(metaDesc) metaDesc.content = T("desc");
+    langBtn.textContent = T("toggle"); langBtn.setAttribute("aria-label", T("toggleLabel")); langBtn.setAttribute("lang", ar ? "en" : "ar");
+    var wa = "https://wa.me/9647727080528?text=" + encodeURIComponent(T("wa"));
+    document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
+    burger.setAttribute("aria-label", document.body.classList.contains("menu-open") ? T("close") : T("open"));
+    renderCards(); startTyping();
+    if(save){
+      try{ localStorage.setItem("lang", LANG); }catch(e){}
+      var u = new URL(location.href); if(ar) u.searchParams.set("lang","ar"); else u.searchParams.delete("lang");
+      history.replaceState(null, "", u.pathname + u.search + u.hash);
+    }
+  }
+  langBtn.addEventListener("click", function(){ setLang(LANG === "ar" ? "en" : "ar", true); });
 
   /* ---------- nav ---------- */
   var nav = document.getElementById("nav"), burger = document.getElementById("burger");
@@ -977,11 +1145,33 @@ dialog.modal[open]{animation:pop .28s ease}
   onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
   burger.addEventListener("click", function(){
     var open = document.body.classList.toggle("menu-open");
-    burger.setAttribute("aria-expanded", String(open)); burger.setAttribute("aria-label", open?"Close menu":"Open menu");
+    burger.setAttribute("aria-expanded", String(open)); burger.setAttribute("aria-label", open ? T("close") : T("open"));
   });
   document.getElementById("menu").addEventListener("click", function(e){
-    if(e.target.closest("a")){ document.body.classList.remove("menu-open"); burger.setAttribute("aria-expanded","false"); }
+    if(e.target.closest("a")){ document.body.classList.remove("menu-open"); burger.setAttribute("aria-expanded","false"); burger.setAttribute("aria-label", T("open")); }
   });
+  document.querySelectorAll('a[href^="https://"]:not([data-wa])').forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+
+  /* ---------- typed role ---------- */
+  var typed = document.getElementById("typed"), typeTimer = null;
+  function startTyping(){
+    clearTimeout(typeTimer);
+    var roles = T("roles"); typed.textContent = roles[0];
+    if(reduce) return;
+    var ri = 0, ci = roles[0].length, del = true;
+    function tick(){
+      if(del){ ci--; if(ci<=0){ del=false; ri=(ri+1)%roles.length; } }
+      else { ci++; if(ci>=roles[ri].length){ del=true; typed.textContent=roles[ri]; typeTimer = setTimeout(tick,2200); return; } }
+      typed.textContent = roles[ri].slice(0,Math.max(0,ci));
+      typeTimer = setTimeout(tick, del?38:70);
+    }
+    typeTimer = setTimeout(tick, 2600);
+  }
+
+  /* ---------- first language ---------- */
+  var startLang = "en";
+  try{ var q = new URLSearchParams(location.search).get("lang"); if(q){ startLang = q; } else { var s = localStorage.getItem("lang"); if(s) startLang = s; } }catch(e){}
+  setLang(startLang, false);
 
   /* ---------- reveal + counters ---------- */
   function count(el){
@@ -994,22 +1184,9 @@ dialog.modal[open]{animation:pop .28s ease}
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add("in"); e.target.querySelectorAll("[data-count]").forEach(count); io.unobserve(e.target); }
     }); }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
-    document.querySelectorAll(".rv").forEach(function(r,i){ r.style.transitionDelay = (i%3)*70+"ms"; io.observe(r); });
+    document.querySelectorAll(".rv:not(.in)").forEach(function(r,i){ r.style.transitionDelay = (i%3)*70+"ms"; io.observe(r); });
   } else {
     document.querySelectorAll(".rv").forEach(function(r){ r.classList.add("in"); });
-  }
-
-  /* ---------- typed role ---------- */
-  var roles = ["IT Infrastructure Engineer","AI & Automation Developer"], typed = document.getElementById("typed");
-  if(!reduce){
-    var ri = 0, ci = roles[0].length, del = true;
-    setTimeout(function tick(){
-      var w = roles[ri];
-      if(del){ ci--; if(ci<=0){ del=false; ri=(ri+1)%roles.length; } }
-      else { ci++; if(ci>=roles[ri].length){ del=true; typed.textContent=roles[ri]; return setTimeout(tick,2200); } }
-      typed.textContent = roles[ri].slice(0,Math.max(0,ci));
-      setTimeout(tick, del?38:70);
-    }, 2600);
   }
 
   /* ---------- hero network canvas ---------- */
